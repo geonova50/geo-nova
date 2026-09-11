@@ -122,7 +122,6 @@ function Modal({ open, onClose }) {
         className="w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl"
         onMouseDown={(e) => e.stopPropagation()}
       >
-
         <div className="mb-6 flex items-start justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-600">
@@ -172,7 +171,6 @@ function Modal({ open, onClose }) {
         </div>
 
         <div className="space-y-4">
-
           <div>
             <label className="text-sm font-bold text-slate-700">
               {role === "student" ? "Student Email" : "Admin Email"}
@@ -233,12 +231,11 @@ function Modal({ open, onClose }) {
           <p className="pt-2 text-center text-xs text-slate-400">
             GEO NOVA Learning Portal
           </p>
-
         </div>
       </motion.div>
     </div>
   );
-}}
+}
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
