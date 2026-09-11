@@ -352,19 +352,19 @@ function App() {
                   <div className="flex items-start gap-4">
                     <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-400 text-slate-950"><MapPin size={22}/></div>
                     <div>
-                      <p className="font-bold">Based in Chennai, India</p>
-                      <p className="mt-1 text-sm leading-6 text-slate-400">GEO NOVA · Chennai, Tamil Nadu, India</p>
+                      <p className="font-bold">Based in Tirunelveli, India</p>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">GEO NOVA · Tirunelveli, Tamil Nadu, India</p>
                     </div>
                   </div>
                   <div className="mt-7 overflow-hidden rounded-2xl border border-white/10 bg-slate-900">
-                    <svg viewBox="0 0 520 220" className="h-52 w-full" role="img" aria-label="Stylized map of Chennai">
+                    <svg viewBox="0 0 520 220" className="h-52 w-full" role="img" aria-label="Stylized map of Tirunelveli">
                       <defs><pattern id="mgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="#334155" strokeWidth="1"/></pattern></defs>
                       <rect width="520" height="220" fill="url(#mgrid)" opacity=".55"/>
                       <path d="M75 55 C145 28 190 58 238 44 S337 40 390 65 S454 72 475 103 C432 128 396 120 358 145 S281 171 230 151 S132 166 83 136 Z" fill="#0f766e" opacity=".22"/>
                       <path d="M90 115 C150 92 188 116 241 96 S331 81 386 104 S438 113 469 98" fill="none" stroke="#60a5fa" strokeWidth="3" strokeDasharray="8 8"/>
                       <path d="M112 47 C173 82 194 105 245 122 S331 140 404 166" fill="none" stroke="#34d399" strokeWidth="2" opacity=".7"/>
                       <circle cx="286" cy="111" r="8" fill="#34d399"/><circle cx="286" cy="111" r="18" fill="none" stroke="#34d399" opacity=".35"/>
-                      <text x="304" y="116" fill="#e2e8f0" fontSize="13" fontWeight="700">CHENNAI</text>
+                      <text x="304" y="116" fill="#e2e8f0" fontSize="13" fontWeight="700">Tirunelveli</text>
                       <text x="304" y="136" fill="#64748b" fontSize="10">13.0827° N · 80.2707° E</text>
                     </svg>
                   </div>
@@ -403,7 +403,7 @@ function App() {
             <div>
               <Logo />
               <p className="mt-5 max-w-sm text-sm leading-6 text-slate-500">Educational platform for Geoinformatics, GIS, Remote Sensing and surveying practice.</p>
-              <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-slate-600"><MapPin size={16} className="text-emerald-600"/> Chennai, India</div>
+              <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-slate-600"><MapPin size={16} className="text-emerald-600"/> Tirunelveli, India</div>
             </div>
             <div>
               <p className="font-bold">Explore</p>
@@ -423,7 +423,7 @@ function App() {
           </div>
           <div className="mt-10 flex flex-col justify-between gap-3 border-t border-slate-100 pt-6 text-xs text-slate-500 sm:flex-row">
             <p>© {new Date().getFullYear()} GEO NOVA. All rights reserved.</p>
-            <p>Chennai, Tamil Nadu, India · Built for spatial learners.</p>
+            <p>Tirunelveli, Tamil Nadu, India · Built for spatial learners.</p>
           </div>
         </div>
       </footer>
