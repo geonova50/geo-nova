@@ -106,7 +106,7 @@ function MapVisual() {
   );
 }
 
-function Modal({ open, onClose }) {
+function Modal({ open, onClose, onLogin}) {
   const [role, setRole] = useState("student");
 
   if (!open) return null;
@@ -214,7 +214,7 @@ function Modal({ open, onClose }) {
           )}
 
           <button
-            onClick={onClose}
+            onClick={() => onLogin(role)}
             className="w-full rounded-2xl bg-slate-950 py-3.5 font-bold text-white transition hover:bg-blue-700"
           >
             {role === "student" ? "Login as Student" : "Login as Admin"}
@@ -236,17 +236,44 @@ function Modal({ open, onClose }) {
     </div>
   );
 }
+function Dashboard({ role, onLogout }) {
+  return (
+    <div className="min-h-screen bg-slate-50 p-10">
+      <h1 className="text-3xl font-bold">
+        {role === "student" ? "Student Dashboard" : "Admin Dashboard"}
+      </h1>
 
+      <p className="mt-3 text-slate-500">
+        Welcome to GEO NOVA Learning Portal
+      </p>
+
+      <button
+        onClick={onLogout}
+        className="mt-6 rounded-xl bg-slate-950 px-5 py-3 font-bold text-white"
+      >
+        Logout
+      </button>
+    </div>
+  );
+}
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [userRole, setUserRole] = useState(null);
 
   const scrollTo = id => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileOpen(false);
   };
-
+if (userRole) {
+  return (
+    <Dashboard
+      role={userRole}
+      onLogout={() => setUserRole(null)}
+    />
+  );
+}
   return (
     <div className="min-h-screen overflow-x-hidden bg-slate-50">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
@@ -531,9 +558,13 @@ function App() {
         </div>
       </footer>
 
-      <Modal open={loginOpen} onClose={() => setLoginOpen(false)} />
-    </div>
-  );
-}
+<Modal
+  open={loginOpen}
+  onClose={() => setLoginOpen(false)}
+  onLogin={(role) => {
+    setUserRole(role);
+    setLoginOpen(false);
+  }}
+/>      
 
 export default App;
