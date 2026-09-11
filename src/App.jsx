@@ -107,32 +107,138 @@ function MapVisual() {
 }
 
 function Modal({ open, onClose }) {
+  const [role, setRole] = useState("student");
+
   if (!open) return null;
+
   return (
-    <div className="fixed inset-0 z-[60] grid place-items-center bg-slate-950/60 p-4 backdrop-blur-sm" onMouseDown={onClose}>
+    <div
+      className="fixed inset-0 z-[60] grid place-items-center bg-slate-950/60 p-4 backdrop-blur-sm"
+      onMouseDown={onClose}
+    >
       <motion.div
-        initial={{ opacity: 0, scale: .96, y: 12 }}
+        initial={{ opacity: 0, scale: 0.96, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         className="w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl"
-        onMouseDown={e => e.stopPropagation()}
+        onMouseDown={(e) => e.stopPropagation()}
       >
+
         <div className="mb-6 flex items-start justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-600">GEO NOVA portal</p>
-            <h3 className="mt-2 font-display text-2xl font-bold">Welcome back</h3>
+            <p className="text-xs font-bold uppercase tracking-[.2em] text-emerald-600">
+              GEO NOVA
+            </p>
+
+            <h3 className="mt-2 font-display text-2xl font-bold text-slate-950">
+              Student Login
+            </h3>
+
+            <p className="mt-1 text-sm text-slate-500">
+              Access your courses, notes and learning materials.
+            </p>
           </div>
-          <button onClick={onClose} className="rounded-xl p-2 text-slate-500 hover:bg-slate-100"><X size={20}/></button>
+
+          <button
+            onClick={onClose}
+            className="rounded-xl p-2 text-slate-500 hover:bg-slate-100"
+          >
+            <X size={20} />
+          </button>
         </div>
+
+        {/* Login Type */}
+        <div className="mb-5 grid grid-cols-2 gap-2 rounded-2xl bg-slate-100 p-1">
+          <button
+            onClick={() => setRole("student")}
+            className={`rounded-xl py-2.5 text-sm font-bold ${
+              role === "student"
+                ? "bg-white text-blue-600 shadow-sm"
+                : "text-slate-500"
+            }`}
+          >
+            Student
+          </button>
+
+          <button
+            onClick={() => setRole("admin")}
+            className={`rounded-xl py-2.5 text-sm font-bold ${
+              role === "admin"
+                ? "bg-white text-blue-600 shadow-sm"
+                : "text-slate-500"
+            }`}
+          >
+            Admin
+          </button>
+        </div>
+
         <div className="space-y-4">
-          <input className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-500" placeholder="Email address" type="email" />
-          <input className="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-500" placeholder="Password" type="password" />
-          <button onClick={onClose} className="w-full rounded-2xl bg-slate-950 py-3.5 font-semibold text-white transition hover:bg-blue-700">Sign in</button>
-          <p className="text-center text-xs text-slate-500">Demo portal UI — connect your auth provider to enable accounts.</p>
+
+          <div>
+            <label className="text-sm font-bold text-slate-700">
+              {role === "student" ? "Student Email" : "Admin Email"}
+            </label>
+
+            <input
+              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+              placeholder={
+                role === "student"
+                  ? "student@example.com"
+                  : "admin@geonova.com"
+              }
+              type="email"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-bold text-slate-700">
+              Password
+            </label>
+
+            <input
+              className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+              placeholder="Enter your password"
+              type="password"
+            />
+          </div>
+
+          {role === "student" && (
+            <div>
+              <label className="text-sm font-bold text-slate-700">
+                Student ID
+              </label>
+
+              <input
+                className="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                placeholder="Enter your student ID"
+                type="text"
+              />
+            </div>
+          )}
+
+          <button
+            onClick={onClose}
+            className="w-full rounded-2xl bg-slate-950 py-3.5 font-bold text-white transition hover:bg-blue-700"
+          >
+            {role === "student" ? "Login as Student" : "Login as Admin"}
+          </button>
+
+          {role === "student" && (
+            <div className="text-center">
+              <button className="text-sm font-semibold text-blue-600 hover:underline">
+                Forgot password?
+              </button>
+            </div>
+          )}
+
+          <p className="pt-2 text-center text-xs text-slate-400">
+            GEO NOVA Learning Portal
+          </p>
+
         </div>
       </motion.div>
     </div>
   );
-}
+}}
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
