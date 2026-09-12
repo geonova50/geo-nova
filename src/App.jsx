@@ -565,6 +565,10 @@ if (userRole) {
     setUserRole(role);
     setLoginOpen(false);
   }}
-/>      
+/>
 </div>
+);
+}
+
 export default App;
+
